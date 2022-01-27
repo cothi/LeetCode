@@ -1,15 +1,17 @@
 func lengthOfLongestSubstring(s string) int {
-	a := s
+   	a := s
 	var ans, tmp int = 0, 0
+	var hMap = make(map[rune]int)
 
 	for j, i := range a {
-		var hMap = make(map[rune]int)
+		hMap = make(map[rune]int)
 		tmp = 1
 		hMap[i] = 1
+
 		for _, k := range a[j+1:] {
 			_, exists := hMap[k]
 			if !exists {
-				tmp += 1
+				tmp++
 				hMap[k] = 1
 			} else {
 				break
@@ -19,7 +21,7 @@ func lengthOfLongestSubstring(s string) int {
 		if ans < tmp {
 			ans = tmp
 		}
-	}
-    
+
+	} 
     return ans
-}
+}	
